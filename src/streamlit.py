@@ -1,8 +1,9 @@
 import pandas as pd
-
+from mplsoccer import Radar, FontManager
+import matplotlib.pyplot as plt
 
 def carga_data():
-    data = pd.read_csv("data/average.cleaned.csv")
+    data = pd.read_csv("./data/average_cleaned.csv")
     return data
 
 
@@ -55,6 +56,26 @@ def radar_mosaic(radar_height=0.915, title_height=0.06, figheight=14):
 
 
 def statsbomb(player):
+
+
+    URL1 = ('https://github.com/googlefonts/SourceSerifProGFVersion/blob/main/'
+            'fonts/SourceSerifPro-Regular.ttf?raw=true')
+    serif_regular = FontManager(URL1)
+    URL2 = ('https://github.com/googlefonts/SourceSerifProGFVersion/blob/main/'
+            'fonts/SourceSerifPro-ExtraLight.ttf?raw=true')
+    serif_extra_light = FontManager(URL2)
+    URL3 = ('https://github.com/google/fonts/blob/main/ofl/rubikmonoone/'
+            'RubikMonoOne-Regular.ttf?raw=true')
+    rubik_regular = FontManager(URL3)
+    URL4 = 'https://github.com/googlefonts/roboto/blob/main/src/hinted/Roboto-Thin.ttf?raw=true'
+    robotto_thin = FontManager(URL4)
+    URL5 = 'https://github.com/googlefonts/roboto/blob/main/src/hinted/Roboto-Regular.ttf?raw=true'
+    robotto_regular = FontManager(URL5)
+    URL6 = 'https://github.com/googlefonts/roboto/blob/main/src/hinted/Roboto-Bold.ttf?raw=true'
+    robotto_bold = FontManager(URL6)
+
+
+    tiros = pd.read_csv("./data/average_cleaned.csv")
     zones = ["PLAYER_NAME", "% LEFT-CORNER-3","% LEFT-MIDR-2","% LEFT-ELBOW-3","% LEFT-ELB/CENT-2",
          "% LEFT-CENTER-3","% LEFT-PAINT","% RIGHT-PAINT","% RIGHT-CENTER-3","% RIGHT-ELB/CENT-2",
          "% RIGHT-ELBOW-3","% RIGHT-MIDR-2","% RIGHT-CORNER-3"]
@@ -101,6 +122,6 @@ def statsbomb(player):
                                 fontproperties=robotto_bold.prop,
                                 ha='left', va='center', color='#e4dded')
 
-    imagen = fig.set_facecolor('#121212')
-
-    return imagen.save("./images/image.png")
+    fig.set_facecolor('#121212')
+    # save the figure
+    plt.savefig('./images/plot.png', dpi=300)
