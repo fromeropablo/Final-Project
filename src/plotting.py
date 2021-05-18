@@ -73,86 +73,100 @@ def draw_court(ax=None, color='black', lw=2, outer_lines=False):
     return ax
 
 
-    def polygons_court():
-        """
-        With this function we can plot the basketball court and check if the polygons created fits well on the court. 
-        If you can help somehow to plot better the 3-point arc, it will be an improvement at this point. 
+def polygons_court():
+    """
+    With this function we can plot the basketball court and check if the polygons created fits well on the court. 
+    If you can help somehow to plot better the 3-point arc, it will be an improvement at this point. 
 
-        """
-        plt.figure(60, figsize = (10,9))
-        draw_court(outer_lines=True)
-        plt.xlim(-30,260)
-        plt.ylim(-300,30)
-        for shape in sf1.shapeRecords():
-            x = [i[0] for i in shape.shape.points[:]]
-            y = [i[1] for i in shape.shape.points[:]]
-    
-            plt.plot(x,y)
+    """
 
-        for shape in sf12.shapeRecords():
-            x = [i[0] for i in shape.shape.points[:]]
-            y = [i[1] for i in shape.shape.points[:]]
-    
-            plt.plot(x,y)
-    
-        for shape in sf6.shapeRecords():
-            x = [i[0] for i in shape.shape.points[:]]
-            y = [i[1] for i in shape.shape.points[:]]
+    sf1 = shapefile.Reader("./shapefiles/test/polygon1.shp")
+    sf12 = shapefile.Reader("./shapefiles/test/polygon12.shp")
+    sf6 = shapefile.Reader("./shapefiles/test/polygon6.shp")
+    sf7 = shapefile.Reader("./shapefiles/test/polygon7.shp")
+    sf3 = shapefile.Reader("./shapefiles/test/polygon3.shp")
+    sf10 = shapefile.Reader("./shapefiles/test/polygon10.shp")
+    sf2 = shapefile.Reader("./shapefiles/test/polygon2.shp")
+    sf11 = shapefile.Reader("./shapefiles/test/polygon11.shp")
+    sf4 = shapefile.Reader("./shapefiles/test/polygon4.shp")
+    sf5 = shapefile.Reader("./shapefiles/test/polygon5.shp")
+    sf9 = shapefile.Reader("./shapefiles/test/polygon9.shp")
+    sf8 = shapefile.Reader("./shapefiles/test/polygon8.shp")
 
-            plt.plot(x,y)
+    plt.figure(60, figsize = (10,9))
+    draw_court(outer_lines=True)
+    plt.xlim(-30,260)
+    plt.ylim(-300,30)
+    for shape in sf1.shapeRecords():
+        x = [i[0] for i in shape.shape.points[:]]
+        y = [i[1] for i in shape.shape.points[:]]
 
-        for shape in sf7.shapeRecords():
-            x = [i[0] for i in shape.shape.points[:]]
-            y = [i[1] for i in shape.shape.points[:]]
+        plt.plot(x,y)
 
-            plt.plot(x,y)
-    
-        for shape in sf3.shapeRecords():
-            x = [i[0] for i in shape.shape.points[:]]
-            y = [i[1] for i in shape.shape.points[:]]
+    for shape in sf12.shapeRecords():
+        x = [i[0] for i in shape.shape.points[:]]
+        y = [i[1] for i in shape.shape.points[:]]
 
-            plt.plot(x,y)
-    
-        for shape in sf10.shapeRecords():
-            x = [i[0] for i in shape.shape.points[:]]
-            y = [i[1] for i in shape.shape.points[:]]
+        plt.plot(x,y)
 
-            plt.plot(x,y)
+    for shape in sf6.shapeRecords():
+        x = [i[0] for i in shape.shape.points[:]]
+        y = [i[1] for i in shape.shape.points[:]]
+
+        plt.plot(x,y)
+
+    for shape in sf7.shapeRecords():
+        x = [i[0] for i in shape.shape.points[:]]
+        y = [i[1] for i in shape.shape.points[:]]
+
+        plt.plot(x,y)
+
+    for shape in sf3.shapeRecords():
+        x = [i[0] for i in shape.shape.points[:]]
+        y = [i[1] for i in shape.shape.points[:]]
+
+        plt.plot(x,y)
+
+    for shape in sf10.shapeRecords():
+        x = [i[0] for i in shape.shape.points[:]]
+        y = [i[1] for i in shape.shape.points[:]]
+
+        plt.plot(x,y)
        
-        for shape in sf2.shapeRecords():
-            x = [i[0] for i in shape.shape.points[:]]
-            y = [i[1] for i in shape.shape.points[:]]
+    for shape in sf2.shapeRecords():
+        x = [i[0] for i in shape.shape.points[:]]
+        y = [i[1] for i in shape.shape.points[:]]
 
-            plt.plot(x,y)
+        plt.plot(x,y)
 
-        for shape in sf11.shapeRecords():
-            x = [i[0] for i in shape.shape.points[:]]
-            y = [i[1] for i in shape.shape.points[:]]
+    for shape in sf11.shapeRecords():
+        x = [i[0] for i in shape.shape.points[:]]
+        y = [i[1] for i in shape.shape.points[:]]
     
-            plt.plot(x,y)
+        plt.plot(x,y)
     
-        for shape in sf4.shapeRecords():
-            x = [i[0] for i in shape.shape.points[:]]
-            y = [i[1] for i in shape.shape.points[:]]
+    for shape in sf4.shapeRecords():
+        x = [i[0] for i in shape.shape.points[:]]
+        y = [i[1] for i in shape.shape.points[:]]
 
-            plt.plot(x,y)
+        plt.plot(x,y)
     
-        for shape in sf5.shapeRecords():
-            x = [i[0] for i in shape.shape.points[:]]
-            y = [i[1] for i in shape.shape.points[:]]
+    for shape in sf5.shapeRecords():
+        x = [i[0] for i in shape.shape.points[:]]
+        y = [i[1] for i in shape.shape.points[:]]
 
-            plt.plot(x,y)
-    
-        for shape in sf9.shapeRecords():
-            x = [i[0] for i in shape.shape.points[:]]
-            y = [i[1] for i in shape.shape.points[:]]
+        plt.plot(x,y)
 
-            plt.plot(x,y)
+    for shape in sf9.shapeRecords():
+        x = [i[0] for i in shape.shape.points[:]]
+        y = [i[1] for i in shape.shape.points[:]]
+
+        plt.plot(x,y)
     
-        for shape in sf8.shapeRecords():
-            x = [i[0] for i in shape.shape.points[:]]
-            y = [i[1] for i in shape.shape.points[:]]
+    for shape in sf8.shapeRecords():
+        x = [i[0] for i in shape.shape.points[:]]
+        y = [i[1] for i in shape.shape.points[:]]
     
-            plt.plot(x,y)    
+        plt.plot(x,y)    
     
-        return plt.show()
+    return plt.show()

@@ -1,7 +1,7 @@
 from selenium import webdriver
 import time
 import pandas as pd
-import js
+import json
 import numpy as npS
 
 """Important note: For the first three functions, you have to use Selenium opening the webdriver with the following url: http://jv.acb.com/es/101266/cartadetiro
@@ -11,6 +11,8 @@ Also, you have to switch the menu at the left zone from "Semana" to "Jornada".
 """
 
 def names():
+    driver = webdriver.Chrome('./chromedriver')
+    driver.maximize_window()
     """
     This function helps us to get the names of the players from a single game."""
 
@@ -22,6 +24,7 @@ def names():
     return nombres
 
 def get_shots():
+
     """
     This function get all the shots from a single game grouping them by player. 
 
@@ -36,6 +39,11 @@ def get_shots():
     list).
 
     """
+
+    driver = webdriver.Chrome('./chromedriver')
+    driver.maximize_window()
+    driver.get('http://jv.acb.com/es/101266/cartadetiro')
+    driver.implicitly_wait(10)
     primer = driver.find_element_by_class_name("sm")
     segun = primer.find_elements_by_class_name("ge-btn.ge-btn")
     for chart in segun:
@@ -82,8 +90,13 @@ def season(first_gameday, last_gameday):
     The result is a large dictionary with the number of the gameday as a key and a dictionary of dictionaries as a value for each gameday. 
     """
 
+    driver = webdriver.Chrome('./chromedriver')
+    driver.maximize_window()
+    driver.get('http://jv.acb.com/es/101266/cartadetiro')
+    driver.implicitly_wait(10)
+
     final = {}
-    for i in range (first_match, last_match + 1):
+    for i in range (first_gameday, last_gameday + 1):
         try:
             semana = driver.find_element_by_class_name("nav-top-sec-round").click()
             nueva = driver.find_elements_by_class_name("nav-opt")
