@@ -1,8 +1,8 @@
 from selenium import webdriver
 import time
 import pandas as pd
-import json
-import src.scrapping as sc
+import js
+import numpy as npS
 
 """Important note: For the first three functions, you have to use Selenium opening the webdriver with the following url: http://jv.acb.com/es/101266/cartadetiro
 
@@ -106,8 +106,23 @@ def season(first_gameday, last_gameday):
 
 "---------------------------------------------------------------------------------------------------------------------------------"
 
-def players_name():
-    tablita = driver.find_element_by_class_name("tablesaw.compact.tablesaw-swipe")
+"""Important note: For these functions, you have to use Selenium opening the webdriver with the following url: 
+
+https://basketball.realgm.com/international/league/4/Spanish-ACB/stats/2021/Averages/All/All/points/All/desc/1/Regular_Season
+
+"""
+
+def players_name(class_name):
+    """
+    Here we obtain the headers from our future stats tables.  
+
+    To obtain headers from general info about players: "tablesaw.tablesaw-swipe.tablesaw-sortable"
+
+    To obtain headers from stats about players: "tablesaw.compact.tablesaw-swipe"
+
+    """
+
+    tablita = driver.find_element_by_class_name(class_name)
     columnas = tablita.find_elements_by_tag_name("th")
     interm = []
     for a in columnas:
@@ -119,4 +134,40 @@ def players_name():
     return columns_name
     
 
+def table_stats(class_name):
+    """
+    In this function we can obtain a stats table with general individual statistics from 2020/21 in Liga Endesa. 
+
+    Depending if you are in average stats or per minute stats, you will have to use one class_name or another:
+
+    -Average stats class_name: "tablesaw.compact.tablesaw-swipe"    url: https://basketball.realgm.com/international/league/4/Spanish-ACB/stats/2021/Averages/All/All/points/All/desc/1/Regular_Season
+
+    -Per minute stats class_name: "tablesaw.compact.tablesaw-swipe"  url: https://basketball.realgm.com/international/league/4/Spanish-ACB/stats/2021/Per_Minute/All/All/points/All/desc/1/Regular_Season
+
+    -General statistics: "tablesaw.tablesaw-swipe.tablesaw-sortable"  url: https://basketball.realgm.com/international/league/4/Spanish-ACB/team/649/Acunsa-GBC/rosters
+
+    """
+
+    buscador = driver.find_element_by_xpath('//*[@id="site-takeover"]/div[3]/div/div[1]/div[4]/select')
+    options = buscador.find_elements_by_tag_name("option") #get all the options into a list
+
+    optionsList = []
+    for option in options: #iterate over the options, place attribute value in list
+        optionsList.append(option.get_attribute("value"))
+    optionsList = optionsList[1:]
+
+    stats_list = [] 
+    final = []
+    for optionValue in optionsList: 
+        print("starting loop on option %s" % optionValue)
+        select = Select(driver.find_element_by_xpath('//*[@id="site-takeover"]/div[3]/div/div[1]/div[4]/select'))
+        select.select_by_value(optionValue)
+        tablita = driver.find_element_by_class_name(class_name)
+        players = tablita.find_elements_by_tag_name("tr")
+        for player in players:
+            stats = player.find_elements_by_tag_name("td")
+            for stat in stats:
+                stats_list.append(stat.text)
+                
+    return stats_list
 
