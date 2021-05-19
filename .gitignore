@@ -127,3 +127,8 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Webdriver
+
+chromedriver
+chromedriver_linux64.zip
