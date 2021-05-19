@@ -1,8 +1,9 @@
 from selenium import webdriver
+from selenium.webdriver.support.ui import Select
 import time
 import pandas as pd
 import json
-import numpy as npS
+import numpy as np
 
 """Important note: For the first three functions, you have to use Selenium opening the webdriver with the following url: http://jv.acb.com/es/101266/cartadetiro
 
@@ -10,11 +11,11 @@ Also, you have to switch the menu at the left zone from "Semana" to "Jornada".
 
 """
 
-def names():
-    driver = webdriver.Chrome('./chromedriver')
-    driver.maximize_window()
+def names(driver):
+    
     """
     This function helps us to get the names of the players from a single game."""
+
 
     lista = driver.find_elements_by_css_selector("td.ta-col.ta-col--name")
     nombres = []
@@ -23,7 +24,7 @@ def names():
         nombres.append(name)
     return nombres
 
-def get_shots():
+def get_shots(driver):
 
     """
     This function get all the shots from a single game grouping them by player. 
@@ -40,10 +41,6 @@ def get_shots():
 
     """
 
-    driver = webdriver.Chrome('./chromedriver')
-    driver.maximize_window()
-    driver.get('http://jv.acb.com/es/101266/cartadetiro')
-    driver.implicitly_wait(10)
     primer = driver.find_element_by_class_name("sm")
     segun = primer.find_elements_by_class_name("ge-btn.ge-btn")
     for chart in segun:
@@ -72,7 +69,7 @@ def get_shots():
             dentro.append(y)
         gran_reg.append(dentro)
         i.click()
-    nombres = names()
+    nombres = names(driver)
     mix = list(zip(nombres, gran_reg))
     for m in mix:
         result[m[0]] = m[1]
@@ -80,7 +77,7 @@ def get_shots():
 
 
 
-def season(first_gameday, last_gameday):
+def season(first_gameday, last_gameday, driver):
     """ 
     This function gets the info from above but with a range of gamedays within the season 2020-21 of the Spanish Basketball League (Liga Endesa).
 
@@ -89,11 +86,6 @@ def season(first_gameday, last_gameday):
     
     The result is a large dictionary with the number of the gameday as a key and a dictionary of dictionaries as a value for each gameday. 
     """
-
-    driver = webdriver.Chrome('./chromedriver')
-    driver.maximize_window()
-    driver.get('http://jv.acb.com/es/101266/cartadetiro')
-    driver.implicitly_wait(10)
 
     final = {}
     for i in range (first_gameday, last_gameday + 1):
@@ -107,7 +99,7 @@ def season(first_gameday, last_gameday):
             jornada = buscador.find_elements_by_class_name("nav-day-match")
             for game in jornada:
                 game.click()
-                data = get_shots()
+                data = get_shots(driver)
                 datos_jornada.update(data)
             intermedio.append(datos_jornada)
             final[i] = intermedio
@@ -119,13 +111,8 @@ def season(first_gameday, last_gameday):
 
 "---------------------------------------------------------------------------------------------------------------------------------"
 
-"""Important note: For these functions, you have to use Selenium opening the webdriver with the following url: 
 
-https://basketball.realgm.com/international/league/4/Spanish-ACB/stats/2021/Averages/All/All/points/All/desc/1/Regular_Season
-
-"""
-
-def players_name(class_name):
+def players_name(url, class_name):
     """
     Here we obtain the headers from our future stats tables.  
 
@@ -134,6 +121,10 @@ def players_name(class_name):
     To obtain headers from stats about players: "tablesaw.compact.tablesaw-swipe"
 
     """
+    driver = webdriver.Chrome('./chromedriver')
+    driver.maximize_window()
+    driver.get(url)
+    time.sleep(2)
 
     tablita = driver.find_element_by_class_name(class_name)
     columnas = tablita.find_elements_by_tag_name("th")
@@ -147,7 +138,7 @@ def players_name(class_name):
     return columns_name
     
 
-def table_stats(class_name):
+def table_stats(url, class_name):
     """
     In this function we can obtain a stats table with general individual statistics from 2020/21 in Liga Endesa. 
 
@@ -160,6 +151,11 @@ def table_stats(class_name):
     -General statistics: "tablesaw.tablesaw-swipe.tablesaw-sortable"  url: https://basketball.realgm.com/international/league/4/Spanish-ACB/team/649/Acunsa-GBC/rosters
 
     """
+    
+    driver = webdriver.Chrome('./chromedriver')
+    driver.maximize_window()
+    driver.get(url)
+    time.sleep(2)
 
     buscador = driver.find_element_by_xpath('//*[@id="site-takeover"]/div[3]/div/div[1]/div[4]/select')
     options = buscador.find_elements_by_tag_name("option") #get all the options into a list

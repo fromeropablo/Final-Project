@@ -1,15 +1,24 @@
 import pandas as pd
 from mplsoccer import Radar, FontManager
 import matplotlib.pyplot as plt
+import src.plotting as pl
+import seaborn as sns
 
 def carga_data():
     data = pd.read_csv("./data/average_cleaned.csv")
     return data
-
-
+    
 def lista_jugadores():
     data = carga_data()
     return list(data.PLAYER_NAME.unique())
+
+def shots_data():
+    datos = pd.read_csv("./data/database_shots.csv")
+    return datos
+
+def lista_tiradores(): 
+    datos = shots_data()
+    return list(datos.name.unique())
 
 def grafico(player):
     data = carga_data()
@@ -49,10 +58,6 @@ def radar_mosaic(radar_height=0.915, title_height=0.06, figheight=14):
     axes['title'].axis('off')
     axes['endnote'].axis('off')
     return figure, axes
-
-
-
-
 
 
 def statsbomb(player):
@@ -125,3 +130,23 @@ def statsbomb(player):
     fig.set_facecolor('#121212')
     # save the figure
     plt.savefig('./images/plot.png', dpi=300)
+
+
+
+def mapa(player):
+    mapita = pd.read_csv("./data/database_shots.csv")
+    mapita["coord_x"] = pd.to_numeric(mapita["coord_x"], downcast="float")
+    mapita["coord_y"] = pd.to_numeric(mapita["coord_y"], downcast="float")
+    mapita["coord_y"] = mapita["coord_y"] * (-1)
+    listita = mapita[mapita["name"] == player]
+    listita_1 = pd.DataFrame(listita, columns = ['name', "shot", 'coord_x','coord_y'])
+    listita_1.shot = listita_1.shot.apply(lambda x: 'in' if 'in' in x else x)
+    listita_1.shot = listita_1.shot.apply(lambda x: 'in' if 'dunk' in x else x)
+    listita_1.shot = listita_1.shot.apply(lambda x: 'out' if 'out' in x else x)
+    plt.figure(figsize=(18,20))
+    pl.draw_court(outer_lines=True)
+    plt.xlim(-30,260)
+    plt.ylim(-300,30)
+    markers = {"#local-in": "s", "#local-out": "x"}
+    sns.scatterplot(data = listita_1, x = "coord_x", y = "coord_y", s = 200,  hue = "shot")
+    return plt.show()

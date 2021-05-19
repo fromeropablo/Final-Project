@@ -19,3 +19,13 @@ personaje = st.selectbox(
 dat.statsbomb(personaje)
 imagen = Image.open("./images/plot.png")
 st.image(imagen)
+
+
+st.dataframe(dat.shots_data())
+player = st.selectbox(
+
+    "Selecciona un personaje", dat.lista_tiradores()
+
+)
+dat.mapa(player)
+st.pyplot()
