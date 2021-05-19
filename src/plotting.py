@@ -12,18 +12,18 @@ def draw_court(ax=None, color='black', lw=2, outer_lines=False):
     if ax is None:
         ax = plt.gca()
 
-    # Create the various parts of a basketball court
+    # Create the various parts of an NBA basketball court
 
     # Create the basketball hoop
     # Diameter of a hoop is 18" so it has a radius of 9", which is a value
-    # 5.5 in our coordinate system
+    # 7.5 in our coordinate system
     hoop = Circle((24.75, -141.25), radius=5.5, linewidth=lw, color=color, fill=False)
 
     # Create backboard
     backboard = Rectangle((17.25, -115.25), 1, -50, linewidth=lw, color=color)
 
     # The paint
-    # Create the outer box 0f the paint
+    # Create the outer box 0f the paint, width=16ft, height=19ft
     outer_box = Rectangle((0, -100.36), 100.97, -84.78, linewidth=lw, color=color,
                           fill=False)
 
@@ -41,11 +41,11 @@ def draw_court(ax=None, color='black', lw=2, outer_lines=False):
     # Create the side 3pt lines, they are 14ft long before they begin to arc
     corner_three_a = Rectangle((0, -26), 30, 0, linewidth=lw,
                                color=color)
-    corner_three_b = Rectangle((0, -259), 30, 0, linewidth=lw, color=color)
+    corner_three_b = Rectangle((0, -259), 33, 0, linewidth=lw, color=color)
     # 3pt arc - center of arc will be the hoop, arc is 23'9" away from hoop
     # I just played around with the theta values until they lined up with the 
     # threes
-    three_arc = Arc((24.75, -142.40), 233, 233, angle = 225, theta1=44, theta2=227, linewidth=lw,
+    three_arc = Arc((32.75, -142.40), 233, 233, angle = 225, theta1=44, theta2=227, linewidth=lw,
                     color=color)
 
     # Center Court

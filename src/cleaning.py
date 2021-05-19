@@ -52,8 +52,20 @@ def cumulat_shots(df):
             for n in i:
                 prueba.append(n)
         jornadas.append(len(prueba))
-    jornadas[:] = [x // 3 for x in jornadas]
-    return jornadas
+    jornadas[:] = [x // 3 for x in jornadas]    
+    return jornadas, prueba
 
 
 
+def change_names(df):
+    nombres = list(df["PLAYER_NAME"])
+    cambio_nombre = []
+    for s in nombres:
+        l = s.split()
+        new = ""
+        for i in range(len(l)-1):
+            s = l[i]
+            new += (s[0].upper()+'. ')
+        new += l[-1].title()
+        cambio_nombre.append(new)
+    return cambio_nombre

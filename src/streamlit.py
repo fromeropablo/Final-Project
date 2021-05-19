@@ -145,8 +145,10 @@ def mapa(player):
     listita_1.shot = listita_1.shot.apply(lambda x: 'out' if 'out' in x else x)
     plt.figure(figsize=(18,20))
     pl.draw_court(outer_lines=True)
-    plt.xlim(-30,260)
-    plt.ylim(-300,30)
+    plt.xlim(0,260)
+    plt.ylim(-270,0)
     markers = {"#local-in": "s", "#local-out": "x"}
-    sns.scatterplot(data = listita_1, x = "coord_x", y = "coord_y", s = 200,  hue = "shot")
+    ax = sns.scatterplot(data = listita_1, x = "coord_x", y = "coord_y", s = 200,  hue = "shot")
+    plt.setp(ax.get_legend().get_texts(), fontsize='22') # for legend text
+    plt.setp(ax.get_legend().get_title(), fontsize='32') # for legend title
     return plt.show()
