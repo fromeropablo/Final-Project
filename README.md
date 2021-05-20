@@ -1,6 +1,6 @@
 # How does geography affect to individual scorers in Spanish Basketball League?
 
-![Zones of the court](./images/polygon_court.png)
+![Zones of the court]("./images/polygon_court.png")
 
 The old game of basketball has changed in the last decade. Now, it has converted in a spatial game where you have to find the best places to take a shot without opposition but with the best efficiency. Rest in peace mid-range pull-ups. Rest in peace low post plays. 
 
@@ -33,8 +33,11 @@ In order to get value info from these shots, we have created polygons to insert 
 Then, using K-Means we have clustered players and we have found that there are four types of players with our data of more than 40 features:
 
 -**Elite-Scorers**: Best players in their teams, get a lot of points with good percentages. 
--**Big-Guys**: Usually centers or power-forwards who have an important impact in their teams. 
+
+-**Big-Guys**: Usually centers or power-forwards who have an important impact in their teams.
+
 -**Playmakers**: Guards and shooting-guards who can shoot from every zone of the court.
+
 -**Role-Players**: The middle-class of the league. They assume less shots and are specialized in defensive tasks. 
 
 
