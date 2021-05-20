@@ -28,6 +28,11 @@ def clusters_data():
 def lista_clusters():
     datos = clusters_data()
     return list(datos.Cluster.unique())
+
+def cluster_description(cluster):
+    datos = pd.read_csv("./data/cluster_description.csv")
+    data = datos[(datos["Cluster"]== f"{cluster}")]
+    return data
  
 def grafico_cl(cluster):
     data = clusters_data()

@@ -1,0 +1,19 @@
+Cluster,Description
+Big-Guys,- The ceiling of the league (median height ~ 2'07 meters). 
+Playmakers,- Guards who start the possession from beyond the arc (median ~ 1'92 meters).  
+Elite-Scorers,"- Best players in the league, they score mostly from the paint and the head of the 3-point arc (median 12’8 PPG and 9’3 shots attempted/per game). "
+Role-Players,- The middle-class of the league. Their role is not to make shots (median FGA ~4’5/per game).
+Big-Guys,"- They are tall, of course, but they shoot well from deep (median 3FG% ~ 34%)."
+Big-Guys,- Kings of the paint. they defend their hoop and are efficients in offense (median FG% ~ 54%). 
+Big-Guys,"- Exceptions: aggresive guards as Pierria Henry, Alex Renfroe or Jaime Fernández. "
+Playmakers,"- Capables to score from every zone on the court, they are in charge to start the offense plays of their teams. "
+Playmakers,- The main caracteristic from this cluster is the number of assists per game. (median ~ 2’2).
+Playmakers,"- Moreover, they are the older group of the league (median ~ 29 years)."
+Playmakers,"- Exceptions: Big and versatiles guys such as Achille Polonara, Alec Brown and Alec Peters."
+Elite-Scorers,- Most of them take advantage from their height but we can find players like Jordan Davis or Dylan Ennis (1’88 meters). 
+Elite-Scorers,"- We can sense that they make efforts mainly in offense, but they are averaging almost a steal per game.   "
+Elite-Scorers,- Just one player (Bojan Dubljevic) from teams which have played Euroleague. 
+Role-Players, -They are ready to assume shots when the team need it but is not their main task.    
+Role-Players,- Associated to defend the best players from the other team in every game. 
+Role-Players,- Players with less minutes and points per game.  
+Role-Players,"- Surprisingly, in this cluster appears players like López-Arostegui or Facu Campazzo."
