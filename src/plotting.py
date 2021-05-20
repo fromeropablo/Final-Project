@@ -7,6 +7,8 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Circle, Rectangle, Arc
 
 
+from matplotlib.patches import Circle, Rectangle, Arc
+
 def draw_court(ax=None, color='black', lw=2, outer_lines=False):
     # If an axes object isn't provided to plot onto, just get current one
     if ax is None:
@@ -95,8 +97,8 @@ def polygons_court():
 
     plt.figure(60, figsize = (10,9))
     draw_court(outer_lines=True)
-    plt.xlim(-30,260)
-    plt.ylim(-300,30)
+    plt.xlim(0,260)
+    plt.ylim(-283,0)
     for shape in sf1.shapeRecords():
         x = [i[0] for i in shape.shape.points[:]]
         y = [i[1] for i in shape.shape.points[:]]
@@ -169,4 +171,5 @@ def polygons_court():
     
         plt.plot(x,y)    
     
+    plt.savefig("./images/polygon_court.png", dpi = 300)
     return plt.show()

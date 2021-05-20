@@ -3,6 +3,7 @@ from mplsoccer import Radar, FontManager
 import matplotlib.pyplot as plt
 import src.plotting as pl
 import seaborn as sns
+import plotly.express as px
 
 def carga_data():
     data = pd.read_csv("./data/average_cleaned.csv")
@@ -19,6 +20,19 @@ def shots_data():
 def lista_tiradores(): 
     datos = shots_data()
     return list(datos.name.unique())
+    
+def clusters_data():
+    datos = pd.read_csv("./data/clusters.csv")
+    return datos
+
+def lista_clusters():
+    datos = clusters_data()
+    return list(datos.Cluster.unique())
+ 
+def grafico_cl(cluster):
+    data = clusters_data()
+    data = data[(data["Cluster"]== f"{cluster}")]
+    return data
 
 def grafico(player):
     data = carga_data()
@@ -95,7 +109,7 @@ def statsbomb(player):
 
     # The lower and upper boundaries for the statistics
     low =  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-    high = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    high = [0.99,0.99,0.99,0.99,0.99,0.99,0.99,0.99,0.99,0.99,0.99,0.99,]
     
     radar = Radar(params, low, high,
               # whether to round any of the labels to integers instead of decimal places
@@ -145,10 +159,13 @@ def mapa(player):
     listita_1.shot = listita_1.shot.apply(lambda x: 'out' if 'out' in x else x)
     plt.figure(figsize=(18,20))
     pl.draw_court(outer_lines=True)
+    plt.axis('off')
     plt.xlim(0,260)
-    plt.ylim(-270,0)
+    plt.ylim(-283,0)
     markers = {"#local-in": "s", "#local-out": "x"}
-    ax = sns.scatterplot(data = listita_1, x = "coord_x", y = "coord_y", s = 200,  hue = "shot")
-    plt.setp(ax.get_legend().get_texts(), fontsize='22') # for legend text
-    plt.setp(ax.get_legend().get_title(), fontsize='32') # for legend title
-    return plt.show()
+    ax = sns.scatterplot(data = listita_1, x = "coord_x", y = "coord_y", s = 300,  hue = "shot", style = "shot")
+    plt.savefig("./images/map.png", dpi = 100)
+
+
+
+
