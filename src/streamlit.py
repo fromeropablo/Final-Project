@@ -148,6 +148,7 @@ def statsbomb(player):
 
     fig.set_facecolor('#121212')
     # save the figure
+    fig.tight_layout()
     plt.savefig('./images/plot.png', dpi=300)
 
 
@@ -168,8 +169,9 @@ def mapa(player):
     plt.xlim(0,260)
     plt.ylim(-283,0)
     markers = {"#local-in": "s", "#local-out": "x"}
-    ax = sns.scatterplot(data = listita_1, x = "coord_x", y = "coord_y", s = 300,  hue = "shot", style = "shot")
-    plt.savefig("./images/map.png", dpi = 100)
+    sns.scatterplot(data = listita_1, x = "coord_x", y = "coord_y", s = 300,  hue = "shot", style = "shot")
+    plt.legend(loc = 4,bbox_to_anchor=(0.95,0.05), fontsize=6, title='Shots attempted',title_fontsize=8, mode = "expand")
+    plt.savefig("./images/map.png",dpi = 600)
 
 
 

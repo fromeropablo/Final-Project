@@ -1,0 +1,135 @@
+altair==4.1.0
+argon2-cffi==20.1.0
+astor==0.8.1
+async-generator==1.10
+attrs @ file:///tmp/build/80754af9/attrs_1604765588209/work
+backcall==0.2.0
+base58==2.1.0
+beautifulsoup4 @ file:///home/linux1/recipes/ci/beautifulsoup4_1610988766420/work
+bleach==3.3.0
+blinker==1.4
+branca==0.4.2
+brotlipy==0.7.0
+cachetools==4.2.2
+certifi==2020.12.5
+cffi==1.14.5
+chardet==4.0.0
+click @ file:///home/linux1/recipes/ci/click_1610990599742/work
+click-plugins==1.1.1
+cligj==0.7.1
+colorama==0.4.4
+configparser==5.0.2
+crayons==0.4.0
+cryptography @ file:///home/conda/feedstock_root/build_artifacts/cryptography_1604179079864/work
+cycler==0.10.0
+decorator==4.4.2
+defusedxml==0.7.1
+entrypoints==0.3
+Fiona==1.8.13.post1
+Flask==1.1.2
+folium==0.12.1
+GDAL==3.0.2
+geopandas @ file:///tmp/build/80754af9/geopandas_1594937497867/work
+gitdb==4.0.7
+GitPython==3.1.17
+greenlet==1.0.0
+idna==2.10
+ipykernel @ file:///tmp/build/80754af9/ipykernel_1596207638929/work/dist/ipykernel-5.3.4-py3-none-any.whl
+ipython @ file:///tmp/build/80754af9/ipython_1598883821407/work
+ipython-genutils==0.2.0
+ipywidgets==7.6.3
+itsdangerous==1.1.0
+jedi @ file:///tmp/build/80754af9/jedi_1611333125342/work
+Jinja2==2.11.3
+joblib @ file:///tmp/build/80754af9/joblib_1613502643832/work
+jsonschema==3.2.0
+jupyter-client @ file:///tmp/build/80754af9/jupyter_client_1601311786391/work
+jupyter-core==4.6.3
+jupyterlab-pygments==0.1.2
+jupyterlab-widgets==1.0.0
+kepler.py==0.0.6
+keplergl==0.2.2
+kiwisolver==1.3.1
+MarkupSafe==1.1.1
+matplotlib==3.4.1
+mistune==0.8.4
+mkl-fft==1.3.0
+mkl-random==1.1.1
+mkl-service==2.3.0
+mplsoccer==1.0.3
+multipledispatch==0.6.0
+munch==2.5.0
+nbclient==0.5.3
+nbconvert==6.0.7
+nbformat==5.1.3
+nest-asyncio==1.5.1
+nltk==3.6.2
+notebook==6.3.0
+numpy @ file:///tmp/build/80754af9/numpy_and_numpy_base_1603570489231/work
+packaging==20.9
+pandas==1.2.4
+pandocfilters==1.4.3
+parso @ file:///tmp/build/80754af9/parso_1596826841367/work
+patsy==0.5.1
+pexpect==4.8.0
+pickleshare==0.7.5
+Pillow==8.2.0
+plotly==4.14.3
+prometheus-client==0.10.1
+prompt-toolkit @ file:///tmp/build/80754af9/prompt-toolkit_1602688806899/work
+protobuf==3.17.0
+ptyprocess==0.6.0
+pyarrow==4.0.0
+pybind11==2.6.2
+pycparser @ file:///home/conda/feedstock_root/build_artifacts/pycparser_1593275161868/work
+pydeck==0.6.2
+Pygments @ file:///tmp/build/80754af9/pygments_1600458456400/work
+pymongo==3.11.3
+PyMySQL==1.0.2
+pyOpenSSL @ file:///home/conda/feedstock_root/build_artifacts/pyopenssl_1608055815057/work
+pyparsing==2.4.7
+pyproj @ file:///tmp/build/80754af9/pyproj_1614277937369/work
+pyrsistent==0.17.3
+pyshadow==0.0.4
+pyshp==2.1.3
+PySocks @ file:///home/conda/feedstock_root/build_artifacts/pysocks_1610291447907/work
+python-dateutil @ file:///home/ktietz/src/ci/python-dateutil_1611928101742/work
+python-dotenv @ file:///home/conda/feedstock_root/build_artifacts/python-dotenv_1617408971533/work
+pytz @ file:///tmp/build/80754af9/pytz_1612215392582/work
+pyzmq==19.0.2
+regex==2021.4.4
+requests==2.25.1
+retrying==1.3.3
+Rtree @ file:///tmp/build/80754af9/rtree_1618420845272/work
+scikit-learn @ file:///tmp/build/80754af9/scikit-learn_1614446682169/work
+scipy @ file:///tmp/build/80754af9/scipy_1616703172749/work
+seaborn==0.11.1
+selenium @ file:///home/conda/feedstock_root/build_artifacts/selenium_1602632393611/work
+Send2Trash==1.5.0
+setuptools-scm==6.0.1
+Shapely @ file:///tmp/build/80754af9/shapely_1599817083863/work
+six @ file:///tmp/build/80754af9/six_1605205327372/work
+smmap==4.0.0
+soupsieve @ file:///tmp/build/80754af9/soupsieve_1616183228191/work
+SQLAlchemy==1.4.12
+statsmodels @ file:///home/conda/feedstock_root/build_artifacts/statsmodels_1591963249119/work
+streamlit==0.82.0
+terminado==0.9.4
+testpath==0.4.4
+threadpoolctl @ file:///tmp/tmp9twdgx9k/threadpoolctl-2.1.0-py3-none-any.whl
+toml==0.10.2
+toolz==0.11.1
+tornado @ file:///tmp/build/80754af9/tornado_1606942300299/work
+tqdm==4.60.0
+traitlets @ file:///tmp/build/80754af9/traitlets_1602787416690/work
+traittypes==0.2.1
+tzlocal==2.1
+urllib3 @ file:///home/conda/feedstock_root/build_artifacts/urllib3_1615828766818/work
+validators==0.18.2
+watchdog==2.1.1
+wcwidth @ file:///tmp/build/80754af9/wcwidth_1593447189090/work
+webdriver-manager==3.4.0
+webencodings==0.5.1
+Werkzeug==1.0.1
+widgetsnbextension==3.5.1
+yellowbrick==1.3.post1

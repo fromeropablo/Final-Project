@@ -170,6 +170,6 @@ def polygons_court():
         y = [i[1] for i in shape.shape.points[:]]
     
         plt.plot(x,y)    
-    
+    plt.axis('off')
     plt.savefig("./images/polygon_court.png", dpi = 300)
     return plt.show()
