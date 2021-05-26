@@ -58,6 +58,8 @@ def cumulat_shots(df):
 
 
 def change_names(df):
+    """In this function we create a new list where we append the surname of each player to merge multiple DataFrames. 
+    """
     nombres = list(df["PLAYER_NAME"])
     cambio_nombre = []
     for s in nombres:

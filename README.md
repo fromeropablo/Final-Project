@@ -1,6 +1,6 @@
 # How does geography affect to individual scorers in Spanish Basketball League?
 
-![Zones of the court](./images/polygon_court.png?raw=true "Title")
+![Zones of the court](./images/polygon_court.png)
 
 The old game of basketball has changed in the last decade. Now, it has converted in a spatial game where you have to find the best places to take a shot without opposition but with the best efficiency. Rest in peace mid-range pull-ups. Rest in peace low post plays. 
 

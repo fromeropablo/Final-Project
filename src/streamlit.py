@@ -80,7 +80,23 @@ def radar_mosaic(radar_height=0.915, title_height=0.06, figheight=14):
 
 
 def statsbomb(player):
+    """ 
+    The very first part of the function consists on loading the dataset of shots attempted and made of each player and create a new subset with the name of the player 
+    and the % of made shots from each zone of the court. 
 
+    After that, we use the marvellous code provided from the website of MPL Soccer Library. 
+
+    """
+    tiros = pd.read_csv("./data/average_cleaned.csv")
+    zones = ["PLAYER_NAME", "% LEFT-CORNER-3","% LEFT-MIDR-2","% LEFT-ELBOW-3","% LEFT-ELB/CENT-2",
+         "% LEFT-CENTER-3","% LEFT-PAINT","% RIGHT-PAINT","% RIGHT-CENTER-3","% RIGHT-ELB/CENT-2",
+         "% RIGHT-ELBOW-3","% RIGHT-MIDR-2","% RIGHT-CORNER-3"]
+    player_polygon = tiros[zones]
+    values = player_polygon[player_polygon["PLAYER_NAME"] == player]
+    values = values.values.tolist()
+    values = values[0][1:]
+
+    #URLs to get fonts for the plots
 
     URL1 = ('https://github.com/googlefonts/SourceSerifProGFVersion/blob/main/'
             'fonts/SourceSerifPro-Regular.ttf?raw=true')
@@ -98,15 +114,6 @@ def statsbomb(player):
     URL6 = 'https://github.com/googlefonts/roboto/blob/main/src/hinted/Roboto-Bold.ttf?raw=true'
     robotto_bold = FontManager(URL6)
 
-
-    tiros = pd.read_csv("./data/average_cleaned.csv")
-    zones = ["PLAYER_NAME", "% LEFT-CORNER-3","% LEFT-MIDR-2","% LEFT-ELBOW-3","% LEFT-ELB/CENT-2",
-         "% LEFT-CENTER-3","% LEFT-PAINT","% RIGHT-PAINT","% RIGHT-CENTER-3","% RIGHT-ELB/CENT-2",
-         "% RIGHT-ELBOW-3","% RIGHT-MIDR-2","% RIGHT-CORNER-3"]
-    player_polygon = tiros[zones]
-    values = player_polygon[player_polygon["PLAYER_NAME"] == player]
-    values = values.values.tolist()
-    values = values[0][1:]
     # parameter names of the statistics we want to show
     params = ["% LEFT-CORNER-3","% LEFT-MIDR-2","% LEFT-ELBOW-3","% LEFT-ELB/CENT-2",
              "% LEFT-CENTER-3","% LEFT-PAINT","% RIGHT-PAINT","% RIGHT-CENTER-3","% RIGHT-ELB/CENT-2",
@@ -154,6 +161,10 @@ def statsbomb(player):
 
 
 def mapa(player):
+    """ 
+    With this function, we load our dataset of every shot attempted and cast the variables to floats. Then, we create a subset determined by the parameter "player",
+    which is the player selected to get the map of shots. FInally, we plot the half-court along the shots attempted by this player during the season. 
+    """
     mapita = pd.read_csv("./data/database_shots.csv")
     mapita["coord_x"] = pd.to_numeric(mapita["coord_x"], downcast="float")
     mapita["coord_y"] = pd.to_numeric(mapita["coord_y"], downcast="float")
@@ -172,7 +183,4 @@ def mapa(player):
     sns.scatterplot(data = listita_1, x = "coord_x", y = "coord_y", s = 300,  hue = "shot", style = "shot")
     plt.legend(loc = 4,bbox_to_anchor=(0.95,0.05), fontsize=6, title='Shots attempted',title_fontsize=8, mode = "expand")
     plt.savefig("./images/map.png",dpi = 600)
-
-
-
-
+    

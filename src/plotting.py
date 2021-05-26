@@ -14,7 +14,7 @@ def draw_court(ax=None, color='black', lw=2, outer_lines=False):
     if ax is None:
         ax = plt.gca()
 
-    # Create the various parts of an NBA basketball court
+    # Create the various parts of an FIBA basketball court
 
     # Create the basketball hoop
     # Diameter of a hoop is 18" so it has a radius of 9", which is a value
